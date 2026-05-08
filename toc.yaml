@@ -17,8 +17,6 @@ navigation:
         page: pages/getting-started/domain.md
       - title: Slack App
         page: pages/getting-started/slack-app.md
-      - title: Preparing Values
-        page: pages/getting-started/preparing-values.md
 
   - title: Installation
     icon: download
@@ -37,6 +35,11 @@ navigation:
             - isEmbeddedClusterDownloadEnabled
       - title: Helm
         page: pages/installation/helm.md
+        visible_when:
+          entitlements:
+            - isHelmInstallEnabled
+      - title: Preparing Values
+        page: pages/installation/preparing-values.md
         visible_when:
           entitlements:
             - isHelmInstallEnabled

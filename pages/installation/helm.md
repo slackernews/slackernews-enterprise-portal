@@ -57,7 +57,7 @@ After installation, configure your Slack app tokens in the admin console at `/ad
 
 ## Chart Configuration
 
-The following values can be provided to the chart when installing. For more information on these parameters, see the [Preparing Values](../getting-started/preparing-values) docs.
+The following values can be provided to the chart when installing. For more information on these parameters, see the [Preparing Values](./preparing-values) docs.
 
 ### Required and Commonly Used Values
 
