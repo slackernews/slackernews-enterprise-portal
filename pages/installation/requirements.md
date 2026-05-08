@@ -9,6 +9,10 @@ visible_when:
 
 Ensure your environment meets these requirements before installing with Embedded Cluster.
 
+<Tip title="SlackerNews Prerequisites">
+Before installing, make sure you have completed the [Getting Started prerequisites](../getting-started/prerequisites), including setting up your [domain](../getting-started/domain) and [Slack app](../getting-started/slack-app).
+</Tip>
+
 ## System Requirements
 
 - Linux operating system
@@ -20,6 +24,7 @@ Ensure your environment meets these requirements before installing with Embedded
 <Warning title="Disk Latency">
 Installations on systems that exceed 10ms P99 write latency may experience etcd instability, leading to cluster failures. Verify disk performance before proceeding.
 </Warning>
+
 - Root access or `sudo` privileges
 - Data directory requirements:
   - 40Gi or more of total space
