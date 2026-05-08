@@ -1,10 +1,16 @@
 ---
-title: Documentation
+title: SlackerNews Documentation
 ---
 
-# Documentation
+# SlackerNews Documentation
 
-Welcome to your personalized documentation portal. The navigation and content are customized based on your license entitlements.
+Welcome to the SlackerNews documentation portal. The navigation and content are customized based on your license entitlements.
+
+## What is SlackerNews?
+
+SlackerNews is a private news site (like Hacker News or Reddit) automatically populated from your company's internal tools — Slack, Google Workspace, GitHub, Jira, Asana, and more. Your team can discover the most discussed documents, links, repos, and issues each week.
+
+SlackerNews is self-hosted, giving your organization full control over data security and privacy.
 
 ## Available Features
 
@@ -22,18 +28,15 @@ Your installation includes access to the following features:
 
 ## Getting Started
 
-<Tip title="New to this portal?">
-Start with the Installation Guide for your deployment method. The configuration selectors on each installation page will generate customized commands for your environment.
+<Tip title="New to SlackerNews?">
+Start with the Getting Started guide to set up your domain, Slack app, and installation prerequisites.
 </Tip>
 
-Use the sidebar navigation on the left to explore available documentation sections. We recommend starting with:
-
-{{#if entitlements.isEmbeddedClusterDownloadEnabled}}
-1. **Installation Requirements** — Review system requirements and prerequisites for Embedded Cluster installations
-{{/if}}
-2. **Installation Guide** — Follow step-by-step installation instructions for your deployment method
-3. **Updates** — Check for and manage application updates
-4. **Support Bundles** — Generate diagnostic bundles for troubleshooting
+1. **[Getting Started](../getting-started/intro)** — Learn how SlackerNews works and what you need before installing
+2. **[Prerequisites](../getting-started/prerequisites)** — License, domain, Slack admin rights, and cluster access
+3. **[Domain Setup](../getting-started/domain)** — Configure your custom domain and TLS
+4. **[Slack App](../getting-started/slack-app)** — Create and install the Slack app with the correct scopes
+5. **[Installation](../installation/overview)** — Choose your installation method (Embedded Cluster or Helm)
 
 ## Quick Links
 
@@ -41,24 +44,30 @@ Use the sidebar navigation on the left to explore available documentation sectio
 <Option value="Linux">
 
 {{#if entitlements.isEmbeddedClusterDownloadEnabled}}
-- [Installation Requirements](installation/requirements)
-- [Linux Installation](installation/linux)
+- [Installation Requirements](../installation/requirements)
+- [Linux Installation](../installation/linux)
 {{/if}}
-- [Release History](installation/release-history)
-- [Instances & Updates](updates/instances)
-- [Support Bundles](support/bundles)
-- [FAQ](support/faq)
+- [Release History](../installation/release-history)
+- [Post-Install Configuration](../post-install/configuration)
+- [Support Bundles](../support/bundles)
+- [FAQ](../support/faq)
 
 </Option>
 <Option value="Helm">
 
 {{#if entitlements.isHelmInstallEnabled}}
-- [Helm Installation](installation/helm)
+- [Helm Installation](../installation/helm)
 {{/if}}
-- [Release History](installation/release-history)
-- [Instances & Updates](updates/instances)
-- [Support Bundles](support/bundles)
-- [FAQ](support/faq)
+- [Release History](../installation/release-history)
+- [Post-Install Configuration](../post-install/configuration)
+- [Support Bundles](../support/bundles)
+- [FAQ](../support/faq)
 
 </Option>
 </OptionSelector>
+
+## Need Help?
+
+- **[Troubleshooting](../support/troubleshooting)** — Common issues and diagnostic steps
+- **[Support Bundles](../support/bundles)** — Generate and upload diagnostic bundles
+- **[Contact Support](../support/contact)** — Reach out to our support team
