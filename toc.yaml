@@ -1,14 +1,35 @@
 navigation:
-  - title: Installation
+  - title: Security
+    icon: shield
+    page: pages/security.md
+    visible_when:
+      permissions:
+        - canViewSecurity
+
+  - title: Getting Started
     icon: rocket
     items:
+      - title: Intro
+        page: pages/getting-started/intro.md
+      - title: Prerequisites
+        page: pages/getting-started/prerequisites.md
+      - title: Domain Setup
+        page: pages/getting-started/domain.md
+      - title: Slack App
+        page: pages/getting-started/slack-app.md
+      - title: Preparing Values
+        page: pages/getting-started/preparing-values.md
+
+  - title: Installation
+    icon: download
+    items:
+      - title: Overview
+        page: pages/installation/overview.md
       - title: Requirements
         page: pages/installation/requirements.md
         visible_when:
           entitlements:
             - isEmbeddedClusterDownloadEnabled
-      - title: Release History
-        page: pages/installation/release-history.md
       - title: Linux
         page: pages/installation/linux.md
         visible_when:
@@ -19,21 +40,28 @@ navigation:
         visible_when:
           entitlements:
             - isHelmInstallEnabled
+      - title: Demo Mode
+        page: pages/installation/demo.md
+      - title: Release History
+        page: pages/installation/release-history.md
 
-  - title: Updates
-    icon: refresh-cw
-    page: pages/updates/instances.md
-
-  - title: Security
-    icon: shield
-    page: pages/security.md
-    visible_when:
-      permissions:
-        - canViewSecurity
+  - title: Post-Install
+    icon: settings
+    items:
+      - title: Configuration
+        page: pages/post-install/configuration.md
+      - title: Integrations
+        page: pages/post-install/integrations.md
+      - title: Updates
+        page: pages/post-install/updates.md
+      - title: Telemetry
+        page: pages/post-install/telemetry.md
 
   - title: Support
     icon: life-buoy
     items:
+      - title: Troubleshooting
+        page: pages/support/troubleshooting.md
       - title: Support Bundles
         page: pages/support/bundles.md
       - title: FAQ
