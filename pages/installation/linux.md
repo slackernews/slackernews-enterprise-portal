@@ -7,7 +7,7 @@ visible_when:
 
 # Linux Installation
 
-Install your application on a Linux server using Embedded Cluster. Read the docs or select your deployment preferences.
+Install SlackerNews on a Linux server using Embedded Cluster. Read the docs or select your deployment preferences.
 
 ## Requirements
 
@@ -59,9 +59,9 @@ Once the installer completes, it will print the URL for the admin console. Open 
 kubectl get pods -A
 
 # Access the admin console
-echo "Admin Console: https://$(hostname):8800"
+echo "Admin Console: https://$(hostname):30000"
 </CommandBlock>
 
 ## Post-Install
 
-See the post-installation documentation for next steps including configuring TLS, setting up backups, and connecting to your identity provider.
+After installation, configure your Slack app tokens in the admin console at `/admin/slack` to complete setup. See the [Post-Install Configuration](../post-install/configuration) page for more details.
