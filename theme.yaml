@@ -6,14 +6,14 @@
 
 branding:
   # Portal branding
-  # title: "Your Portal Name"
-  # primaryColor: "#4f46e5"
-  # logo: assets/logo.png
-  # favicon: assets/favicon.ico
+  title: "SlackerNews"
+  primaryColor: "#FF8552"
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
 
   # Support contact info — shown on the Contact Support page (via the
   # <ContactInfo /> component) and on support bundle pages.
-  # contact: "support@yourcompany.com"
+  contact: "support@slackernews.io"
   # supportPortalLink: "https://support.yourcompany.com"
 
   # Login page footer. Customize or remove these to brand your login page.
