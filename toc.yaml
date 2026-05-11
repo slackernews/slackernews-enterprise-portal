@@ -48,6 +48,30 @@ navigation:
       - title: Release History
         page: pages/installation/release-history.md
 
+  - title: Infrastructure
+    icon: database
+    visible_when:
+      entitlements:
+        - isTerraformEnabled
+    items:
+      - title: Database Setup
+        page: pages/infrastructure/database.md
+      - title: AWS
+        terraform_module: github.com/slackernews/slackernews-enterprise-portal//terraform/aws?ref=main
+        visible_when:
+          entitlements:
+            - isAWSEnabled
+      - title: Azure
+        terraform_module: github.com/slackernews/slackernews-enterprise-portal//terraform/azure?ref=main
+        visible_when:
+          entitlements:
+            - isAzureEnabled
+      - title: GCP
+        terraform_module: github.com/slackernews/slackernews-enterprise-portal//terraform/gcp?ref=main
+        visible_when:
+          entitlements:
+            - isGCPEnabled
+
   - title: Post-Install
     icon: settings
     items:
