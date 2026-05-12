@@ -57,17 +57,17 @@ navigation:
       - title: Database Setup
         page: pages/infrastructure/database.md
       - title: AWS
-        terraform_module: github.com/slackernews/slackernews-enterprise-portal//terraform/aws?ref=main
+        terraform_module: github.com/slackernews/slackernews-terraform//aws?ref=main
         visible_when:
           entitlements:
             - is_aws_enabled
       - title: Azure
-        terraform_module: github.com/slackernews/slackernews-enterprise-portal//terraform/azure?ref=main
+        terraform_module: github.com/slackernews/slackernews-terraform//azure?ref=main
         visible_when:
           entitlements:
             - is_azure_enabled
       - title: GCP
-        terraform_module: github.com/slackernews/slackernews-enterprise-portal//terraform/gcp?ref=main
+        terraform_module: github.com/slackernews/slackernews-terraform//gcp?ref=main
         visible_when:
           entitlements:
             - is_gcp_enabled
