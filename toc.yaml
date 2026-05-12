@@ -52,7 +52,7 @@ navigation:
     icon: database
     visible_when:
       entitlements:
-        - isTerraformEnabled
+        - is_terraform_enabled
     items:
       - title: Database Setup
         page: pages/infrastructure/database.md
@@ -60,17 +60,17 @@ navigation:
         terraform_module: github.com/slackernews/slackernews-enterprise-portal//terraform/aws?ref=main
         visible_when:
           entitlements:
-            - isAWSEnabled
+            - is_aws_enabled
       - title: Azure
         terraform_module: github.com/slackernews/slackernews-enterprise-portal//terraform/azure?ref=main
         visible_when:
           entitlements:
-            - isAzureEnabled
+            - is_azure_enabled
       - title: GCP
         terraform_module: github.com/slackernews/slackernews-enterprise-portal//terraform/gcp?ref=main
         visible_when:
           entitlements:
-            - isGCPEnabled
+            - is_gcp_enabled
 
   - title: Post-Install
     icon: settings

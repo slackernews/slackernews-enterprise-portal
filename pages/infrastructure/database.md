@@ -2,7 +2,7 @@
 title: Database Setup
 visible_when:
   entitlements:
-    - isTerraformEnabled
+    - is_terraform_enabled
 ---
 
 # Database Setup
