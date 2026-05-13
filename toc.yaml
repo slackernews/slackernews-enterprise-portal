@@ -20,9 +20,6 @@ navigation:
 
   - title: Infrastructure
     icon: database
-    visible_when:
-      entitlements:
-        - is_terraform_enabled
     items:
       - title: Database Setup
         page: pages/infrastructure/database.md
