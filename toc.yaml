@@ -25,9 +25,6 @@ navigation:
         page: pages/infrastructure/database.md
       - title: AWS
         terraform_module: github.com/slackernews/slackernews-terraform//aws?ref=main
-        visible_when:
-          entitlements:
-            - is_aws_enabled
       - title: Azure
         terraform_module: github.com/slackernews/slackernews-terraform//azure?ref=main
         visible_when:
