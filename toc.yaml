@@ -34,7 +34,7 @@ navigation:
         terraform_module: github.com/slackernews/slackernews-terraform//gcp?ref=main
         visible_when:
           entitlements:
-            - is_gcp_enabled
+            - isGcpEnabled
 
   - title: Installation
     icon: download
