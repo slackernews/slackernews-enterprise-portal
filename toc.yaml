@@ -18,6 +18,18 @@ navigation:
       - title: Slack App
         page: pages/getting-started/slack-app.md
 
+  - title: Infrastructure
+    icon: database
+    items:
+      - title: Database Setup
+        page: pages/infrastructure/database.md
+      - title: AWS
+        terraform_module: github.com/slackernews/slackernews-terraform//aws?ref=main
+      - title: Azure
+        terraform_module: github.com/slackernews/slackernews-terraform//azure?ref=main
+      - title: GCP
+        terraform_module: github.com/slackernews/slackernews-terraform//gcp?ref=main
+
   - title: Installation
     icon: download
     items:
@@ -47,30 +59,6 @@ navigation:
         page: pages/installation/demo.md
       - title: Release History
         page: pages/installation/release-history.md
-
-  - title: Infrastructure
-    icon: database
-    visible_when:
-      entitlements:
-        - is_terraform_enabled
-    items:
-      - title: Database Setup
-        page: pages/infrastructure/database.md
-      - title: AWS
-        terraform_module: github.com/slackernews/slackernews-terraform//aws?ref=main
-        visible_when:
-          entitlements:
-            - is_aws_enabled
-      - title: Azure
-        terraform_module: github.com/slackernews/slackernews-terraform//azure?ref=main
-        visible_when:
-          entitlements:
-            - is_azure_enabled
-      - title: GCP
-        terraform_module: github.com/slackernews/slackernews-terraform//gcp?ref=main
-        visible_when:
-          entitlements:
-            - is_gcp_enabled
 
   - title: Post-Install
     icon: settings

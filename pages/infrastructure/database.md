@@ -1,8 +1,5 @@
 ---
 title: Database Setup
-visible_when:
-  entitlements:
-    - is_terraform_enabled
 ---
 
 # Database Setup
