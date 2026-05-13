@@ -27,14 +27,8 @@ navigation:
         terraform_module: github.com/slackernews/slackernews-terraform//aws?ref=main
       - title: Azure
         terraform_module: github.com/slackernews/slackernews-terraform//azure?ref=main
-        visible_when:
-          entitlements:
-            - is_azure_enabled
       - title: GCP
         terraform_module: github.com/slackernews/slackernews-terraform//gcp?ref=main
-        visible_when:
-          entitlements:
-            - isGcpEnabled
 
   - title: Installation
     icon: download
