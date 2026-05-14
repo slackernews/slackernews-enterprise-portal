@@ -28,37 +28,15 @@ If another service (such as nginx or Apache) is using ports 80 or 443, stop it b
 
 Create a directory for your SlackerNews deployment and download the following files:
 
-- `docker-compose.yml`
-- `.env.example`
-- `Caddyfile`
+- [docker-compose.yml]({{asset "assets/docker-compose.yml"}})
+- [.env.example]({{asset "assets/.env.example"}})
+- [Caddyfile]({{asset "assets/Caddyfile"}})
 
 You will rename `.env.example` to `.env` and customize it with your values in the next step.
 
 ## Environment Configuration
 
 Copy `.env.example` to `.env` and fill in all values marked with `<...>`.
-
-<CodeBlock language="bash" title=".env">
-# The public domain where Slackernews will be served.
-# Caddy will provision a TLS certificate for this domain via Let's Encrypt.
-SLACKERNEWS_DOMAIN=news.example.com
-
-# Slack OAuth credentials from https://api.slack.com/apps
-SLACKERNEWS_SLACK_AUTH_CLIENT_ID=your-client-id
-SLACKERNEWS_SLACK_AUTH_CLIENT_SECRET=your-client-secret
-SLACKERNEWS_SLACK_USER_TOKEN=xoxp-your-user-token
-SLACKERNEWS_SLACK_BOT_TOKEN=xoxb-your-bot-token
-
-# OAuth redirect URI (must match your Slack app settings)
-SLACK_AUTH_REDIRECT_URI=https://news.example.com/login/callback
-
-# PostgreSQL credentials
-POSTGRES_PASSWORD=choose-a-strong-password
-DB_URI=postgresql://slackernews:choose-a-strong-password@postgres:5432/slackernews
-
-# Comma-separated list of admin emails (Slack account emails)
-SLACKERNEWS_ADMIN_USER_EMAILS=admin@example.com
-</CodeBlock>
 
 ### Required Variables
 
@@ -85,7 +63,7 @@ Once everything works, remove or comment this line to switch to production certi
 
 ## Docker Compose Services
 
-The `docker-compose.yml` defines three services:
+The [`docker-compose.yml`]({{asset "assets/docker-compose.yml"}}) defines three services:
 
 ### PostgreSQL
 
@@ -101,19 +79,7 @@ A Caddy 2 reverse proxy that terminates TLS and forwards traffic to the SlackerN
 
 ## Caddy Configuration
 
-The `Caddyfile` configures automatic HTTPS with Let's Encrypt:
-
-<CodeBlock language="caddyfile" title="Caddyfile">
-{
-	acme_ca {$CADDY_TLS_CA:https://acme-v02.api.letsencrypt.org/directory}
-}
-
-{$SLACKERNEWS_DOMAIN}
-
-reverse_proxy slackernews:3000
-</CodeBlock>
-
-Caddy uses the `SLACKERNEWS_DOMAIN` environment variable to determine which domain to serve, and reverse-proxies all requests to the `slackernews` container on port 3000.
+The [`Caddyfile`]({{asset "assets/Caddyfile"}}) configures automatic HTTPS with Let's Encrypt. Caddy uses the `SLACKERNEWS_DOMAIN` environment variable to determine which domain to serve, and reverse-proxies all requests to the `slackernews` container on port 3000.
 
 ## Install
 
