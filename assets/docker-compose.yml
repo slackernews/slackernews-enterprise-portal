@@ -1,0 +1,67 @@
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: slackernews
+      POSTGRES_DB: slackernews
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U slackernews -d slackernews"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - slackernews
+
+  slackernews:
+    build:
+      context: ./slackernews
+      dockerfile: ../deploy/Dockerfile.web
+    restart: unless-stopped
+    environment:
+      DB_URI: ${DB_URI}
+      SLACK_AUTH_REDIRECT_URI: ${SLACK_AUTH_REDIRECT_URI}
+      SLACKERNEWS_SLACK_BOT_TOKEN: ${SLACKERNEWS_SLACK_BOT_TOKEN}
+      SLACKERNEWS_SLACK_USER_TOKEN: ${SLACKERNEWS_SLACK_USER_TOKEN}
+      SLACKERNEWS_SLACK_AUTH_CLIENT_ID: ${SLACKERNEWS_SLACK_AUTH_CLIENT_ID}
+      SLACKERNEWS_SLACK_AUTH_CLIENT_SECRET: ${SLACKERNEWS_SLACK_AUTH_CLIENT_SECRET}
+      SLACKERNEWS_ADMIN_USER_EMAILS: ${SLACKERNEWS_ADMIN_USER_EMAILS:-}
+    volumes:
+      - slackernews_backups:/app/backups
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - slackernews
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      SLACKERNEWS_DOMAIN: ${SLACKERNEWS_DOMAIN}
+      CADDY_TLS_CA: ${CADDY_TLS_CA:-}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - slackernews
+    networks:
+      - slackernews
+
+volumes:
+  postgres_data:
+  slackernews_backups:
+  caddy_data:
+  caddy_config:
+
+networks:
+  slackernews:
+    driver: bridge

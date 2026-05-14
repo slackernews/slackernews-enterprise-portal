@@ -4,7 +4,7 @@ title: Installation Overview
 
 # Installation Overview
 
-SlackerNews supports two installation methods. Choose the one that fits your infrastructure.
+SlackerNews supports three installation methods. Choose the one that fits your infrastructure.
 
 ## Embedded Cluster (Linux VM)
 
@@ -29,6 +29,18 @@ Teams with existing Kubernetes expertise and cluster resources.
 
 {{#if entitlements.isHelmInstallEnabled}}
 - [Helm Installation](helm)
+{{/if}}
+
+{{#if entitlements.isDockerComposeEnabled}}
+## Docker Compose
+
+If you prefer a container-based deployment without Kubernetes, use Docker Compose. This method runs PostgreSQL, SlackerNews, and a Caddy reverse proxy on a single host with automatic TLS via Let's Encrypt.
+
+<Tip title="Best for">
+Teams that want a simple, self-managed container deployment without cluster orchestration.
+</Tip>
+
+- [Docker Compose Installation](docker-compose)
 {{/if}}
 
 ## Demo Mode
