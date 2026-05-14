@@ -13,6 +13,8 @@ SlackerNews is a self-hosted application, giving your team full control over you
 
 View vulnerability scanning and security reports for your releases:
 
+<SecurityVersionSelector />
+
 <CVEReport />
 
 <SBOMReport />
