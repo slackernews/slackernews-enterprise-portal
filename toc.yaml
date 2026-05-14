@@ -71,6 +71,8 @@ navigation:
         page: pages/post-install/updates.md
       - title: Telemetry
         page: pages/post-install/telemetry.md
+      - title: CLI
+        page: pages/post-install/cli.md
 
   - title: Support
     icon: life-buoy
