@@ -18,6 +18,7 @@ Before starting, ensure you have the following prerequisites in place:
 - A public domain or subdomain with a DNS A/AAAA record pointing to your host
 - Ports **80** and **443** available on the host (Caddy binds these for Let's Encrypt)
 - Your Slack app credentials (Client ID, Client Secret, Bot Token, User Token)
+- Your Replicated license ID and key (for proxy registry authentication)
 - Root or sudo access to manage Docker services
 
 <Warning title="Port Availability">
@@ -50,6 +51,7 @@ Copy `.env.example` to `.env` and fill in all values marked with `<...>`.
 | `POSTGRES_PASSWORD` | Password for the PostgreSQL database. Must match the password embedded in `DB_URI`. |
 | `DB_URI` | PostgreSQL connection string. The hostname `postgres` resolves inside the Docker network. |
 | `SLACKERNEWS_ADMIN_USER_EMAILS` | Comma-separated Slack email addresses granted super-admin on first login. |
+| `SLACKERNEWS_IMAGE` | *(Optional)* Replicated proxy registry image path. Defaults to `registry.replicated.com/slackernews/slackernews-web:latest`. Update the tag to match your licensed release version. |
 
 ### Optional: Let's Encrypt Staging
 
@@ -71,7 +73,7 @@ A PostgreSQL 16 container with a persistent volume for data storage. A healthche
 
 ### SlackerNews
 
-The SlackerNews application container built from the local `slackernews` directory. It depends on PostgreSQL and receives all environment variables from `.env`.
+The SlackerNews application container pulled from the Replicated proxy registry. It depends on PostgreSQL and receives all environment variables from `.env`.
 
 ### Caddy
 
@@ -81,15 +83,25 @@ A Caddy 2 reverse proxy that terminates TLS and forwards traffic to the SlackerN
 
 The [`Caddyfile`]({{asset "assets/Caddyfile"}}) configures automatic HTTPS with Let's Encrypt. Caddy uses the `SLACKERNEWS_DOMAIN` environment variable to determine which domain to serve, and reverse-proxies all requests to the `slackernews` container on port 3000.
 
+## Log in to the Replicated Registry
+
+Before pulling the SlackerNews image, authenticate Docker with your Replicated license credentials:
+
+<CommandBlock>
+docker login registry.replicated.com -u <license-id> -p <license-key>
+</CommandBlock>
+
+Your license ID and key are available from the Replicated Vendor Portal or your license file.
+
 ## Install
 
-After configuring `.env`, start the services:
+After configuring `.env` and logging in to the registry, start the services:
 
 <CommandBlock>
 docker compose up -d
 </CommandBlock>
 
-Docker Compose will pull the PostgreSQL and Caddy images, build the SlackerNews image, create the Docker network and volumes, and start all containers in the correct order.
+Docker Compose will pull the PostgreSQL, Caddy, and SlackerNews images, create the Docker network and volumes, and start all containers in the correct order.
 
 <Tip title="First Start">
 The initial build and database initialization may take a few minutes. You can watch the logs with:
@@ -129,17 +141,16 @@ For additional configuration options, see the [Post-Install Configuration](../po
 
 ## Updating
 
-To update to a newer version of SlackerNews:
+To update to a newer version of SlackerNews, update the `SLACKERNEWS_IMAGE` tag in `.env` to the new release version, then pull and restart:
 
 <CommandBlock>
-# Pull the latest code
-git pull origin main
-
-# Rebuild and restart
-docker compose up -d --build
+# Update .env with the new image tag (e.g. SLACKERNEWS_IMAGE=registry.replicated.com/slackernews/slackernews-web:1.2.3)
+# Then pull the new image and restart
+docker compose pull slackernews
+docker compose up -d
 </CommandBlock>
 
-This rebuilds the SlackerNews image with the latest code and restarts the container while preserving the PostgreSQL data volume.
+This pulls the updated image from the Replicated registry and restarts the container while preserving the PostgreSQL data volume.
 
 ## Troubleshooting
 

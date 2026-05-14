@@ -17,9 +17,7 @@ services:
       - slackernews
 
   slackernews:
-    build:
-      context: ./slackernews
-      dockerfile: ../deploy/Dockerfile.web
+    image: ${SLACKERNEWS_IMAGE:-registry.replicated.com/slackernews/slackernews-web:latest}
     restart: unless-stopped
     environment:
       DB_URI: ${DB_URI}
