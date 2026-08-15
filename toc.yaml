@@ -25,10 +25,19 @@ navigation:
         page: pages/infrastructure/database.md
       - title: AWS
         terraform_module: github.com/slackernews/slackernews-terraform//aws?ref=main
+        visible_when:
+          entitlements:
+            - isAWSEnabled
       - title: Azure
         terraform_module: github.com/slackernews/slackernews-terraform//azure?ref=main
+        visible_when:
+          entitlements:
+            - isAzureEnabled
       - title: GCP
         terraform_module: github.com/slackernews/slackernews-terraform//gcp?ref=main
+        visible_when:
+          entitlements:
+            - isGCPEnabled
 
   - title: Installation
     icon: download
@@ -50,6 +59,11 @@ navigation:
         visible_when:
           entitlements:
             - isHelmInstallEnabled
+      - title: Docker Compose
+        page: pages/installation/docker-compose.md
+        visible_when:
+          entitlements:
+            - isDockerComposeEnabled
       - title: Preparing Values
         page: pages/installation/preparing-values.md
         visible_when:

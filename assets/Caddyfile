@@ -1,0 +1,9 @@
+{
+	# Default to Let's Encrypt production. Override via CADDY_TLS_CA env var
+	# (e.g. https://acme-staging-v02.api.letsencrypt.org/directory for testing).
+	acme_ca {$CADDY_TLS_CA:https://acme-v02.api.letsencrypt.org/directory}
+}
+
+{$SLACKERNEWS_DOMAIN}
+
+reverse_proxy slackernews:3000

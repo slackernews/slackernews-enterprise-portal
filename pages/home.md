@@ -22,6 +22,9 @@ Your installation includes access to the following features:
 {{#if entitlements.isHelmInstallEnabled}}
 - **Helm Installation:** Deploy to existing Kubernetes clusters using Helm charts
 {{/if}}
+{{#if entitlements.isDockerComposeEnabled}}
+- **Docker Compose:** Run on a single host with Docker Compose and automatic TLS
+{{/if}}
 {{#if entitlements.isAirgapSupported}}
 - **Air Gap Support:** Install in disconnected environments
 {{/if}}
@@ -64,6 +67,17 @@ Start with the Getting Started guide to set up your domain, Slack app, and insta
 - [FAQ](../support/faq)
 
 </Option>
+{{#if entitlements.isDockerComposeEnabled}}
+<Option value="Docker Compose">
+
+- [Docker Compose Installation](../installation/docker-compose)
+- [Release History](../installation/release-history)
+- [Post-Install Configuration](../post-install/configuration)
+- [Support Bundles](../support/bundles)
+- [FAQ](../support/faq)
+
+</Option>
+{{/if}}
 </OptionSelector>
 
 ## Need Help?
